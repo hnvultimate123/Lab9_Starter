@@ -165,20 +165,24 @@
           break;
         case "Start Timer":
           button.addEventListener("click", event => {
-              console.time();
+              console.time("Timer Button");
           });
           break;
         case "End Timer":
           button.addEventListener("click", event => {
-              console.timeEnd();
+              console.timeEnd("Timer Button");
           });
           break;
         case "Console Trace":
           button.addEventListener("click", event => {
-              console.trace();
+              console.trace(button);
           });
           break;
         case "Trigger a Global Error":
+          button.addEventListener("click", event => {
+              console.log(boom);
+          });
+          break;        
         default:
           // Nothing
     }
