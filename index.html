@@ -102,6 +102,87 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    for (const button of errorBtns) {
+      switch (button.innerText) {
+        case "Console Log":
+          button.addEventListener("click", event => {
+            console.log("Console Log Demo");
+          });
+          break;
+        case "Console Error":
+          button.addEventListener("click", event => {
+              console.error("Console Error Demo");
+          });
+          break;
+        case "Console Count":
+          button.addEventListener("click", event => {
+              console.count("Count Button");
+          });
+          break;
+        case "Console Warn":
+          button.addEventListener("click", event => {
+              console.warn("Console Warn Button");
+          });
+          break;          
+        case "Console Assert":
+          button.addEventListener("click", event => {
+              // Using mozilla docs example for inspiration
+              const number = 2;
+              const errorMsg = "2 is not equal to 3"
+              console.assert(number == 3, "%o", { number, errorMsg });
+          });
+          break;
+        case "Console Clear":
+          button.addEventListener("click", event => {
+              console.clear();
+              count = 0;
+          });
+          break;
+        case "Console Dir":
+          button.addEventListener("click", event => {
+              console.dir(button);
+          });
+          break;
+        case "Console dirxml":
+          button.addEventListener("click", event => {
+              console.dirxml(button);
+          });
+          break;
+        case "Console Group Start":
+          button.addEventListener("click", event => {
+              console.group();
+          });
+          break;
+        case "Console Group End":
+          button.addEventListener("click", event => {
+              console.groupEnd();
+          });
+          break;
+        case "Console Table":
+          button.addEventListener("click", event => {
+              console.table([["Xenoblade", "Chronicles"], ["Majora's", "Mask"], ["Smash", "Ultimate"]]);
+          });
+          break;
+        case "Start Timer":
+          button.addEventListener("click", event => {
+              console.time();
+          });
+          break;
+        case "End Timer":
+          button.addEventListener("click", event => {
+              console.timeEnd();
+          });
+          break;
+        case "Console Trace":
+          button.addEventListener("click", event => {
+              console.trace();
+          });
+          break;
+        case "Trigger a Global Error":
+        default:
+          // Nothing
+    }
+  }
   </script>
 </body>
 
