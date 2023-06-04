@@ -96,17 +96,38 @@
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
       let worked = true;
+
       try {
+        if (isNaN(firstNum) && (isNaN(secondNum))) {
+          throw new ValidationError("Both values are invalid");
+        } else if (isNaN(secondNum)) {
+          throw new ValidationError("Second value is invalid");
+        } else if (isNaN(firstNum)){
+          throw new ValidationError("First value is invalid");
+        }
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (error) {
         worked = false;
-        console.log(error);
+        if (error instanceof ValidationError) {
+          console.error(error.name + ": " + error.message)
+        } else {
+          throw error;
+        }
       } finally {
         if (!worked) {
           output.innerHTML = "Invalid operation!";
         }
-      }
+        console.log("Completed operation");
+      } 
+
     });
+
+    class ValidationError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+      }
+    }
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
@@ -207,6 +228,8 @@
           // Nothing
     }
   }
+
+
   </script>
 </body>
 
