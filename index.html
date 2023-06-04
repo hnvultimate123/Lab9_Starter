@@ -95,12 +95,16 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
+      let worked = true;
       try {
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (error) {
+        worked = false;
         console.log(error);
       } finally {
-        output.innerHTML = "Invalid operation!";
+        if (!worked) {
+          output.innerHTML = "Invalid operation!";
+        }
       }
     });
 
