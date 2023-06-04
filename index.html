@@ -103,7 +103,11 @@
     // Start your code here
     // You may move this JS to another file if you wish
     for (const button of errorBtns) {
-      switch (button.innerText) {
+      setEventListener(button);
+  }
+
+  function setEventListener(button) {
+    switch (button.innerText) {
         case "Console Log":
           button.addEventListener("click", event => {
             console.log("Console Log Demo");
@@ -175,7 +179,13 @@
           break;
         case "Console Trace":
           button.addEventListener("click", event => {
-              console.trace(button);
+            function outside() {
+              function inside() {
+                console.trace();
+              }
+              inside();
+            }
+            outside();
           });
           break;
         case "Trigger a Global Error":
